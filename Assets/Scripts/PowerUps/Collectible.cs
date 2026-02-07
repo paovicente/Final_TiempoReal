@@ -3,8 +3,8 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
     [Header("Collectible Settings")]
-    public int pointsValue = 10;           // Cuántos puntos da al recogerlo
-    public AudioClip collectSound;         // Sonido opcional
+    public int pointsValue = 10;          
+    public AudioClip collectSound;         
     private AudioSource audioSource;
 
     private void Start()
@@ -20,10 +20,13 @@ public class Collectible : MonoBehaviour
             {
                 PlayerScore.Instance.AddPoints(pointsValue);
             }
+            else
+            {
+                Debug.Log("Player score instance NULL");
+            }
 
-            gameObject.SetActive(false);
-
-            // Opcional: reproducir sonido
+                gameObject.SetActive(false);
+ 
             if (collectSound != null && audioSource != null)
             {
                 audioSource.PlayOneShot(collectSound);
