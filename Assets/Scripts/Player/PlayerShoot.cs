@@ -97,6 +97,7 @@ public class PlayerShoot : MonoBehaviour
     private void Shoot()
     {
         GameObject bullet = BulletPoolPlayer.Instance.GetBullet();
+        Debug.Log("instancia  nula?" + BulletPoolPlayer.Instance);
         if (bullet == null) return;
 
         bullet.transform.position = firePoint.position;
