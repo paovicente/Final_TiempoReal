@@ -17,6 +17,7 @@ public class UIButton : MonoBehaviour
     {
         GetComponent<Button>().onClick.AddListener(() =>
         {
+            string buttonName = gameObject.name;
 
             if (isExitButton)
             {
@@ -24,10 +25,19 @@ public class UIButton : MonoBehaviour
                 return;
             }
 
-            if (LevelManager.instance.isPaused && string.IsNullOrEmpty(sceneName))
+            if (LevelManager.isPaused)
             {
-                LevelManager.instance.ResumeGame();
-                return;
+                if (buttonName == "Resume_Button")
+                {
+                    LevelManager.instance.ResumeGame();
+                    return;
+                }
+
+                if (buttonName == "OptionsPause_Button")
+                {
+                    LevelManager.instance.ShowOptionsPanel();
+                    return;
+                }
             }
 
             if (!string.IsNullOrEmpty(sceneName))
@@ -45,4 +55,5 @@ public class UIButton : MonoBehaviour
 
         LevelManager.instance.ExitGame();
     }
+
 }

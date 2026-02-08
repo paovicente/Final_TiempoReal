@@ -18,9 +18,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private string menuScene = "Menu";
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private Camera fallbackCamera;
-    
+    [SerializeField] private GameObject optionsPanel;
+
     private Scene activeScene;
-    public bool isPaused = false;
+    public static bool isPaused { get; private set; }
 
     private void Awake()
     {
@@ -136,7 +137,7 @@ public class LevelManager : MonoBehaviour
         LoadScene(sceneName, delay);
     }
 
-    public void PauseGame()
+    /*public void PauseGame()
     {
         isPaused = true;
         Time.timeScale = 0f;
@@ -150,20 +151,33 @@ public class LevelManager : MonoBehaviour
         PlayerPauseHandler playerHandler = GetPlayerHandler();
         if (playerHandler != null)
             playerHandler.PausePlayer();
+    }*/
+
+    public void PauseGame()
+    {
+        isPaused = true;
+
+        if (pausePanel != null)
+            pausePanel.SetActive(true);
+
+        PlayerPauseHandler player = GetPlayerHandler();
+        if (player != null)
+            player.PausePlayer();
+
     }
 
     public void ResumeGame()
     {
         isPaused = false;
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
 
         //Debug.Log("RESUME GAME");
         if (pausePanel != null)
             pausePanel.SetActive(false);
 
-        PlayerPauseHandler playerHandler = GetPlayerHandler();
-        if (playerHandler != null)
-            playerHandler.ResumePlayer();
+        PlayerPauseHandler player = GetPlayerHandler();
+        if (player != null)
+            player.ResumePlayer();
     }
 
     public void ReturnToMenuFromPause(float delay = 0f)
@@ -180,6 +194,24 @@ public class LevelManager : MonoBehaviour
     private PlayerPauseHandler GetPlayerHandler()
     {
         return FindFirstObjectByType<PlayerPauseHandler>();
+    }
+
+    public void ShowOptionsPanel()
+    {
+        if (pausePanel != null)
+            pausePanel.SetActive(false);
+
+        if (optionsPanel != null)
+            optionsPanel.SetActive(true);
+    }
+
+    public void CloseOptionsPanel()
+    {
+        if (optionsPanel != null)
+            optionsPanel.SetActive(false);
+
+        if (pausePanel != null)
+            pausePanel.SetActive(true);
     }
 
     public void ExitGame()
