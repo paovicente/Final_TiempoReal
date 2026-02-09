@@ -1,32 +1,31 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer sprite;
+    [SerializeField] private InputActionReference moveAction;
+    [SerializeField] private InputActionReference jumpAction;
+    [SerializeField] private InputActionReference dashAction;
+    [SerializeField] private Rigidbody2D playerRigidbody;
 
-    [Header("Movement")]
-    [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private float acceleration = 50f;
-    [SerializeField] private float deceleration = 60f;
+    [Header("Inputs")]
+    private Vector2 moveInput;
 
-    private float moveInput;
-    private float currentSpeed;
+    [Header("Player variables")]
+    [SerializeField] private float playerSpeed = 2f;
 
     [Header("Jump")]
-    [SerializeField] private float jumpForce = 14f;
+    [SerializeField] private float jumpForce = 12f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.2f;
 
     private bool isGrounded;
     private float originalGravity;
-
-    [Header("Better Jump")]
-    [SerializeField] private float fallMultiplier = 2.5f;
-    [SerializeField] private float lowJumpMultiplier = 2f;
 
     [Header("Dash")]
     [SerializeField] private float dashSpeed = 20f;
@@ -38,63 +37,55 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        originalGravity = rb.gravityScale;
+        originalGravity = playerRigidbody.gravityScale;
+        
+        moveAction.action.started += HandleMoveInput;
+        moveAction.action.performed += HandleMoveInput;
+        moveAction.action.canceled += HandleMoveInput;
+
+        //jumpAction.action.started += HandleJumpInput;
+        jumpAction.action.performed += HandleJumpInput;
+        jumpAction.action.canceled += HandleJumpInput;
+
+        dashAction.action.performed += HandleDashInput;
+
     }
 
     private void Update()
     {
-        ReadInputs();
         CheckGround();
-        ApplyBetterJump();
         UpdateAnimator();
     }
 
     private void FixedUpdate()
     {
         if (!isDashing)
-            Move();
+            MovePlayer();
     }
 
-    // --------------------------------------------------
-    // INPUTS
-    // --------------------------------------------------
-    private void ReadInputs()
+    private void HandleMoveInput(InputAction.CallbackContext context)
     {
-        moveInput = Input.GetAxisRaw("Horizontal");
-
-        if (Input.GetButtonDown("Jump"))
-            Jump();
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
-            TryDash();
+        moveInput = context.ReadValue<Vector2>();
     }
 
-    // --------------------------------------------------
-    // MOVEMENT
-    // --------------------------------------------------
-    private void Move()
-    {
-        float targetSpeed = moveInput * moveSpeed;
-
-        if (Mathf.Abs(targetSpeed) > 0.1f)
-            currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, acceleration * Time.fixedDeltaTime);
-        else
-            currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.fixedDeltaTime);
-
-        rb.linearVelocity = new Vector2(currentSpeed, rb.linearVelocity.y);
-
-        if (moveInput != 0)
-            sprite.flipX = moveInput < 0;
-    }
-
-    // --------------------------------------------------
-    // JUMP
-    // --------------------------------------------------
-    private void Jump()
+    private void HandleJumpInput(InputAction.CallbackContext context) 
     {
         if (!isGrounded || isDashing) return;
 
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        playerRigidbody.linearVelocity = new Vector2(playerRigidbody.linearVelocity.x, jumpForce);
+    }
+
+    private void HandleDashInput(InputAction.CallbackContext context)
+    {
+        TryDash();
+    }
+
+    private void MovePlayer()
+    {
+        playerRigidbody.linearVelocity = new Vector2(moveInput.x * playerSpeed, playerRigidbody.linearVelocity.y); //the player moves in x according to the input and maintains velocity in y 
+        
+        if (moveInput.x != 0)
+            sprite.flipX = moveInput.x < 0;
     }
 
     private void CheckGround()
@@ -102,75 +93,31 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
-    // --------------------------------------------------
-    // BETTER JUMP (makes jumps feel tight and responsive)
-    // --------------------------------------------------
-    private void ApplyBetterJump()
-    {
-        if (isDashing) return;
-
-        // Caída más rápida
-        if (rb.linearVelocity.y < 0)
-        {
-            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }
-        // Salto corto (si soltás la tecla de salto)
-        else if (rb.linearVelocity.y > 0 && !Input.GetButton("Jump"))
-        {
-            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-        }
-    }
-
-    // --------------------------------------------------
-    // DASH
-    // --------------------------------------------------
     private void TryDash()
     {
         if (Time.time < lastDashTime + dashCooldown) return;
         if (isDashing) return;
 
-        // Leer input de dash (Horizontal y Vertical)
-        float dashX = Input.GetAxisRaw("Horizontal");
-        float dashY = Input.GetAxisRaw("Vertical");
+        Vector2 dashDirection = moveInput;
 
-        // Si no hay input, dash hacia adelante según el sprite
-        if (Mathf.Approximately(dashX, 0f) && Mathf.Approximately(dashY, 0f))
-            dashX = sprite.flipX ? -1f : 1f;
+        //if no input, dash in sprite direction
+        if (dashDirection == Vector2.zero)
+            dashDirection = sprite.flipX ? Vector2.left : Vector2.right;
 
-        Vector2 dashDirection = new Vector2(dashX, dashY).normalized;
-
-        StartCoroutine(DashRoutine(dashDirection));
+        StartCoroutine(DashRoutine(dashDirection.normalized));
     }
 
-    private System.Collections.IEnumerator DashRoutine(Vector2 direction)
+    private IEnumerator DashRoutine(Vector2 direction)
     {
         isDashing = true;
         lastDashTime = Time.time;
 
-        rb.gravityScale = 0;
-        rb.linearVelocity = direction * dashSpeed;
+        playerRigidbody.gravityScale = 0;
+        playerRigidbody.linearVelocity = direction * dashSpeed;
 
         yield return new WaitForSeconds(dashTime);
 
-        rb.gravityScale = originalGravity;
-        isDashing = false;
-    }
-
-
-
-    private System.Collections.IEnumerator DashRoutine()
-    {
-        isDashing = true;
-        lastDashTime = Time.time;
-
-        float direction = sprite.flipX ? -1 : 1;
-
-        rb.gravityScale = 0;
-        rb.linearVelocity = new Vector2(direction * dashSpeed, 0);
-
-        yield return new WaitForSeconds(dashTime);
-
-        rb.gravityScale = originalGravity;
+        playerRigidbody.gravityScale = originalGravity;
         isDashing = false;
     }
 
@@ -179,9 +126,9 @@ public class PlayerController : MonoBehaviour
     // --------------------------------------------------
     private void UpdateAnimator()
     {
-        bool running = Mathf.Abs(rb.linearVelocity.x) > 0.1f;
-        bool jumping = rb.linearVelocity.y > 0.1f && !isGrounded;
-        bool falling = rb.linearVelocity.y < -0.1f && !isGrounded;
+        bool running = Mathf.Abs(playerRigidbody.linearVelocity.x) > 0.1f;
+        bool jumping = playerRigidbody.linearVelocity.y > 0.1f && !isGrounded;
+        bool falling = playerRigidbody.linearVelocity.y < -0.1f && !isGrounded;
         bool idle = !running && isGrounded && !isDashing;
 
         animator.SetBool("isIdle", idle);
@@ -193,12 +140,12 @@ public class PlayerController : MonoBehaviour
 
     public bool IsRunning()
     {
-        return Mathf.Abs(rb.linearVelocity.x) > 0.1f && isGrounded && !isDashing;
+        return Mathf.Abs(playerRigidbody.linearVelocity.x) > 0.1f && isGrounded && !isDashing;
     }
 
     public bool IsJumping()
     {
-        return rb.linearVelocity.y > 0.1f && !isGrounded;
+        return playerRigidbody.linearVelocity.y > 0.1f && !isGrounded;
     }
 
 

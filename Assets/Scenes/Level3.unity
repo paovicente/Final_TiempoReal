@@ -16900,6 +16900,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 8debd32cdfec4b54998cd8b178b2c134, type: 2}
     - target: {fileID: 854103277517735569, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
+      propertyPath: jumpForce
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 854103277517735569, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
+      propertyPath: dashAction
+      value: 
+      objectReference: {fileID: -7471211009204490832, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    - target: {fileID: 854103277517735569, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
+      propertyPath: jumpAction
+      value: 
+      objectReference: {fileID: -2099379676528639254, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    - target: {fileID: 854103277517735569, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
+      propertyPath: moveAction
+      value: 
+      objectReference: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    - target: {fileID: 854103277517735569, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
       propertyPath: groundCheck
       value: 
       objectReference: {fileID: 1300478187}
@@ -16907,6 +16923,10 @@ PrefabInstance:
       propertyPath: playerSpeed
       value: 2.89
       objectReference: {fileID: 0}
+    - target: {fileID: 854103277517735569, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
+      propertyPath: playerRigidbody
+      value: 
+      objectReference: {fileID: 1686468348}
     - target: {fileID: 2057269026354000025, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
       propertyPath: m_Layer
       value: 6
