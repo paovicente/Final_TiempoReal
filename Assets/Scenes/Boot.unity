@@ -1635,6 +1635,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753301063}
   m_CullTransparentMesh: 1
+--- !u!1 &822492336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 822492338}
+  - component: {fileID: 822492337}
+  m_Layer: 0
+  m_Name: BulletPoolPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &822492337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822492336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f38917598072a45855c605d03246f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 415156522480115850, guid: de29a960bd9d30742989153eb0fba705, type: 3}
+  initialPoolSize: 20
+  allowPoolExpansion: 1
+--- !u!4 &822492338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822492336}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.09682, y: -2.1995213, z: 0.10780131}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &853538766
 GameObject:
   m_ObjectHideFlags: 0
@@ -3394,6 +3441,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterMixer: {fileID: 24100000, guid: 4cd7f461aecf95c4db24bdcbbe7583e7, type: 2}
+  defaultMusic: 0.5
+  defaultSFX: 1
+  defaultPlayer: 1
 --- !u!114 &1689693726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4381,3 +4431,4 @@ SceneRoots:
   - {fileID: 1050678240}
   - {fileID: 336344320}
   - {fileID: 1584022671}
+  - {fileID: 822492338}
