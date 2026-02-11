@@ -23,7 +23,6 @@ public class BulletPoolPlayer : MonoBehaviour
 
         bullets = new List<GameObject>();
 
-        // Crear balas iniciales
         for (int i = 0; i < initialPoolSize; i++)
         {
             CreateNewBullet();
@@ -46,14 +45,14 @@ public class BulletPoolPlayer : MonoBehaviour
                 return b;
         }
 
-        // Si no hay balas libres
+        //if no bullets then allow expansion
         if (allowPoolExpansion)
         {
             GameObject newBullet = CreateNewBullet();
             return newBullet;
         }
 
-        // Si no se puede expandir
+        //if cant expand
         return null;
     }
 }

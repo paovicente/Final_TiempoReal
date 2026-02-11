@@ -9,12 +9,8 @@ public class BulletEnemy : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    // Esto se usa para ignorar colisión con la torreta
     private Collider2D ignoreCollider;
 
-    /// <summary>
-    /// Inicializa la bala. Llama desde la torreta después de instanciarla.
-    /// </summary>
     public void Initialize(Transform target, Collider2D turretCollider)
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,11 +20,11 @@ public class BulletEnemy : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         rb.freezeRotation = true;
 
-        // Calcular dirección hacia el target en el momento del disparo
+        //calculate direction to target when shooting
         Vector2 direction = (target.position - transform.position).normalized;
         rb.linearVelocity = direction * speed;
 
-        // Ignorar colisión con la torreta
+        //ignore collision with turret
         Collider2D bulletCollider = GetComponent<Collider2D>();
         if (turretCollider != null && bulletCollider != null)
         {
@@ -40,7 +36,6 @@ public class BulletEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Colisión con jugador
         if (collision.CompareTag("Player"))
         {
             PlayerHealth health = collision.GetComponent<PlayerHealth>();
@@ -49,7 +44,6 @@ public class BulletEnemy : MonoBehaviour
 
             gameObject.SetActive(false);
         }
-        // Colisión con balas del jugador
         else if (collision.CompareTag("Bullet"))
         {
             gameObject.SetActive(false);

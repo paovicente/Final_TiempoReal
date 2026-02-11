@@ -44,6 +44,9 @@ public class AdvancedEnemy : MonoBehaviour
     private int currentHealth;
     private bool isDead = false;
 
+    [Header("Death Spawn")]
+    [SerializeField] private GameObject onDeathActivate;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -71,7 +74,6 @@ public class AdvancedEnemy : MonoBehaviour
         HandleBurst();
     }
 
-    // --- Patrulla ---
     private void Patrol()
     {
         float dir = movingRight ? 1 : -1;
@@ -90,7 +92,6 @@ public class AdvancedEnemy : MonoBehaviour
             spriteRenderer.flipX = !movingRight;
     }
 
-    // --- Salto ---
     private void HandleJump()
     {
         if (Time.time >= lastJumpTime + jumpInterval && IsGrounded())
@@ -117,7 +118,6 @@ public class AdvancedEnemy : MonoBehaviour
         return hit.collider != null;
     }
 
-    // --- Disparo hacia el jugador ---
     private void HandleShooting()
     {
         if (player == null) return;
@@ -147,7 +147,6 @@ public class AdvancedEnemy : MonoBehaviour
         if (bd != null) bd.damage = damageToPlayer;
     }
 
-    // --- Burst circular ---
     private void HandleBurst()
     {
         if (Time.time >= lastBurstTime + burstInterval)
@@ -187,7 +186,6 @@ public class AdvancedEnemy : MonoBehaviour
         yield return null;
     }
 
-    // --- Feedback ---
     public void TakeHit(int damageAmount = 1)
     {
         if (isDead) return;
@@ -208,14 +206,10 @@ public class AdvancedEnemy : MonoBehaviour
         }
     }
 
-    [Header("Death Spawn")]
-    [SerializeField] private GameObject onDeathActivate; // arrastrá el objeto en el Inspector
-
     private void Die()
     {
         isDead = true;
 
-        // Activar objeto al morir
         if (onDeathActivate != null)
             onDeathActivate.SetActive(true);
 
@@ -231,7 +225,6 @@ public class AdvancedEnemy : MonoBehaviour
             PlayerHealth health = collision.gameObject.GetComponent<PlayerHealth>();
             if (health != null) health.TakeDamage(damageToPlayer);
 
-            // Cambiar dirección al chocar
             FlipDirection(!movingRight);
         }
     }

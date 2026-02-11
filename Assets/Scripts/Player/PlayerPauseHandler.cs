@@ -5,12 +5,13 @@ public class PlayerPauseHandler : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private PlayerController playerController;
-
+    [SerializeField] private PlayerShoot playerShoot;
     private void Awake()
     {
         if (animator == null) animator = GetComponent<Animator>();
         if (audioSource == null) audioSource = GetComponent<AudioSource>();
         if (playerController == null) playerController = GetComponent<PlayerController>();
+        if (playerShoot == null) playerShoot = GetComponent<PlayerShoot>();
     }
 
     public void PausePlayer()
@@ -23,6 +24,9 @@ public class PlayerPauseHandler : MonoBehaviour
 
         if (playerController != null)
             playerController.enabled = false;
+
+        if (playerShoot != null)
+            playerShoot.enabled = false;
     }
 
     public void ResumePlayer()
@@ -35,5 +39,9 @@ public class PlayerPauseHandler : MonoBehaviour
 
         if (playerController != null)
             playerController.enabled = true;
+
+        if (playerShoot != null)
+            playerShoot.enabled = true;
     }
 }
+

@@ -9,12 +9,12 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private float rightLimit = 20f;
 
     [Header("Enemy Stats")]
-    [SerializeField] private int maxHits = 2;         // cantidad de disparos para morir
-    [SerializeField] private int damageToPlayer = 15; // daño al jugador
+    [SerializeField] private int maxHits = 2;         
+    [SerializeField] private int damageToPlayer = 15; 
 
     [Header("References")]
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Color hitColor = new Color(1, 0.3f, 0.3f); // color del blink
+    [SerializeField] private Color hitColor = new Color(1, 0.3f, 0.3f);
     private Color originalColor;
 
     private bool movingRight = false;
@@ -59,9 +59,6 @@ public class EnemyPatrol : MonoBehaviour
                         new Vector3(rightLimit, transform.position.y + 0.5f));
     }
 
-    // ------------------------------------------
-    //   COLISIÓN CON EL JUGADOR
-    // ------------------------------------------
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isDead) return;
@@ -72,15 +69,10 @@ public class EnemyPatrol : MonoBehaviour
             if (health != null)
                 health.TakeDamage(damageToPlayer);
 
-            // cambiar de dirección al chocar
             FlipDirection(!movingRight);
         }
     }
 
-
-    // ------------------------------------------
-    //  COLISIÓN CON BALAS
-    // ------------------------------------------
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDead) return;
@@ -88,7 +80,7 @@ public class EnemyPatrol : MonoBehaviour
         if (collision.CompareTag("Bullet"))
         {
             TakeHit();
-            collision.gameObject.SetActive(false); // Desactivamos la bala al impactar
+            collision.gameObject.SetActive(false);
         }
     }
 
@@ -102,9 +94,6 @@ public class EnemyPatrol : MonoBehaviour
             Die();
     }
 
-    // ------------------------------------------
-    //   FEEDBACK DE IMPACTO
-    // ------------------------------------------
     private IEnumerator BlinkFeedback()
     {
         spriteRenderer.color = hitColor;
@@ -112,15 +101,9 @@ public class EnemyPatrol : MonoBehaviour
         spriteRenderer.color = originalColor;
     }
 
-    // ------------------------------------------
-    //   MUERTE DEL ENEMIGO
-    // ------------------------------------------
     private void Die()
     {
         isDead = true;
-
-        // podés poner animación de muerte acá
-        // animator.SetTrigger("Die");
 
         Destroy(gameObject, 0.15f);
     }

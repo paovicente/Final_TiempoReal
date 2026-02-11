@@ -18,14 +18,15 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private string menuScene = "Menu";
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private Camera fallbackCamera;
-    [SerializeField] private GameObject optionsPanel;
+    [SerializeField] private GameObject currentOptionsPanel;
 
     private Scene activeScene;
     public static bool isPaused { get; private set; }
 
     private void Awake()
     {
-        PlayerPrefs.DeleteKey("PlayerHealth");
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
         if (instance == null)
         {
             instance = this;
@@ -137,24 +138,12 @@ public class LevelManager : MonoBehaviour
         LoadScene(sceneName, delay);
     }
 
-    /*public void PauseGame()
-    {
-        isPaused = true;
-        Time.timeScale = 0f;
-
-        if (pausePanel != null)
-            pausePanel.SetActive(true);
-
-        foreach (Animator anim in pausePanel.GetComponentsInChildren<Animator>())
-            anim.updateMode = AnimatorUpdateMode.UnscaledTime;
-
-        PlayerPauseHandler playerHandler = GetPlayerHandler();
-        if (playerHandler != null)
-            playerHandler.PausePlayer();
-    }*/
-
     public void PauseGame()
     {
+        EnemyPatrol[] patrols = FindObjectsByType<EnemyPatrol>(FindObjectsSortMode.None);
+        TurretEnemy[] turrets = FindObjectsByType<TurretEnemy>(FindObjectsSortMode.None);
+        AdvancedEnemy[] advances = FindObjectsByType<AdvancedEnemy>(FindObjectsSortMode.None);
+
         isPaused = true;
 
         if (pausePanel != null)
@@ -164,10 +153,28 @@ public class LevelManager : MonoBehaviour
         if (player != null)
             player.PausePlayer();
 
+        foreach (var patrol in patrols)
+        {
+            patrol.enabled = false;
+        }
+
+        foreach (var turret in turrets)
+        {
+            turret.enabled = false;
+        }
+
+        foreach (var advance in advances)
+        {
+            advance.enabled = false;
+        }
     }
 
     public void ResumeGame()
     {
+        EnemyPatrol[] patrols = FindObjectsByType<EnemyPatrol>(FindObjectsSortMode.None);
+        TurretEnemy[] turrets = FindObjectsByType<TurretEnemy>(FindObjectsSortMode.None);
+        AdvancedEnemy[] advances = FindObjectsByType<AdvancedEnemy>(FindObjectsSortMode.None);
+
         isPaused = false;
         //Time.timeScale = 1f;
 
@@ -178,6 +185,21 @@ public class LevelManager : MonoBehaviour
         PlayerPauseHandler player = GetPlayerHandler();
         if (player != null)
             player.ResumePlayer();
+
+        foreach (var patrol in patrols)
+        {
+            patrol.enabled = true;
+        }
+
+        foreach (var turret in turrets)
+        {
+            turret.enabled = true;
+        }
+
+        foreach (var advance in advances)
+        {
+            advance.enabled = true;
+        }
     }
 
     public void ReturnToMenuFromPause(float delay = 0f)
@@ -201,16 +223,18 @@ public class LevelManager : MonoBehaviour
         if (pausePanel != null)
             pausePanel.SetActive(false);
 
-        if (optionsPanel != null)
-            optionsPanel.SetActive(true);
+        if (currentOptionsPanel != null)
+            currentOptionsPanel.SetActive(true);
+        else
+            Debug.Log("current options panel null");
     }
 
     public void CloseOptionsPanel()
     {
-        if (optionsPanel != null)
-            optionsPanel.SetActive(false);
+        if (currentOptionsPanel != null)
+            currentOptionsPanel.SetActive(false);
 
-        if (pausePanel != null)
+        if (isPaused && pausePanel != null)
             pausePanel.SetActive(true);
     }
 
