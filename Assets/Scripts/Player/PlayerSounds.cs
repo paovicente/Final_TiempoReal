@@ -8,10 +8,12 @@ public class PlayerSounds : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip jumpClip;
     [SerializeField] private AudioClip runClip;
-
+    [SerializeField] private AudioClip shootClip;
+    
     [Header("Audio Configurations")]
     [SerializeField] private float minPitch = 0.9f;
     [SerializeField] private float maxPitch = 1.2f;
+    [SerializeField] private float shootVolume = 0.1f;
 
     private bool wasRunning = false;
 
@@ -45,7 +47,7 @@ public class PlayerSounds : MonoBehaviour
             audioSource.clip = runClip;
             audioSource.loop = true;
             audioSource.volume = 1f;
-            //audioSource.pitch = Random.Range(minPitch, maxPitch);
+            audioSource.pitch = Random.Range(minPitch, maxPitch);
             audioSource.Play();
         }
         else if (!isRunning && wasRunning)
@@ -57,4 +59,13 @@ public class PlayerSounds : MonoBehaviour
 
         wasRunning = isRunning;
     }
+
+    public void PlayShootSound()
+    {
+        if (shootClip == null) return;
+
+        audioSource.pitch = Random.Range(minPitch, maxPitch);
+        audioSource.PlayOneShot(shootClip, shootVolume);
+    }
+
 }

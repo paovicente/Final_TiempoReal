@@ -3,7 +3,7 @@ using UnityEngine;
 public class WeaponPickup : MonoBehaviour
 {
     [Header("Asignar en Inspector")]
-    public RuntimeAnimatorController armedAnimator; // animator del jugador cuando tiene arma
+    public RuntimeAnimatorController armedAnimator;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,12 +13,11 @@ public class WeaponPickup : MonoBehaviour
         Animator anim = collision.GetComponent<Animator>();
 
         if (shooter != null)
-            shooter.enabled = true;          // activa el disparo del jugador
+            shooter.enabled = true;          
 
         if (anim != null && armedAnimator != null)
-            anim.runtimeAnimatorController = armedAnimator; // cambia animator
+            anim.runtimeAnimatorController = armedAnimator; 
 
-        // destruir arma del piso
         Destroy(gameObject);
     }
 }

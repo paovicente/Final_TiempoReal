@@ -14865,53 +14865,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1273401150}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &801537498
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 801537500}
-  - component: {fileID: 801537499}
-  m_Layer: 0
-  m_Name: BulletPoolPlayer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &801537499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801537498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14f38917598072a45855c605d03246f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 415156522480115850, guid: de29a960bd9d30742989153eb0fba705, type: 3}
-  initialPoolSize: 20
-  allowPoolExpansion: 1
---- !u!4 &801537500
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801537498}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.09682, y: -2.1995213, z: 0.10780131}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &946758524 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8456328266950127743, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
@@ -16943,6 +16896,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -6814766905822777914, guid: 6ba7497e24e422149b63e8594c578516, type: 3}
+    - target: {fileID: 3424208598911730268, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
+      propertyPath: playerShoot
+      value: 
+      objectReference: {fileID: 1686468360}
     - target: {fileID: 3739565475787974591, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.6899999
@@ -17019,6 +16976,10 @@ PrefabInstance:
       propertyPath: jumpClip
       value: 
       objectReference: {fileID: 8300000, guid: 44c88ec66505c774a8644a9fdf84c080, type: 3}
+    - target: {fileID: 9114314606246934656, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
+      propertyPath: shootClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a79ce1109fce8e4090c91f62af454d8, type: 3}
     m_RemovedComponents:
     - {fileID: 5687344813108351443, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
     - {fileID: 7204640539911049831, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
@@ -17050,7 +17011,6 @@ SceneRoots:
   - {fileID: 5511204798841425904}
   - {fileID: 954155390}
   - {fileID: 1462367391}
-  - {fileID: 801537500}
   - {fileID: 1884699800}
   - {fileID: 1536387839}
   - {fileID: 1471189301}

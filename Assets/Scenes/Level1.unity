@@ -32853,6 +32853,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -6814766905822777914, guid: 6ba7497e24e422149b63e8594c578516, type: 3}
+    - target: {fileID: 3424208598911730268, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
+      propertyPath: playerShoot
+      value: 
+      objectReference: {fileID: 5511204798841425906}
     - target: {fileID: 3739565475787974591, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.6899999
@@ -32934,6 +32938,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 44c88ec66505c774a8644a9fdf84c080, type: 3}
     - target: {fileID: 9114314606246934656, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
+      propertyPath: shootClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a79ce1109fce8e4090c91f62af454d8, type: 3}
+    - target: {fileID: 9114314606246934656, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 5511204798841425905}
@@ -32955,6 +32963,17 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 2697756560147481986, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
   m_PrefabInstance: {fileID: 5511204798841425904}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5511204798841425906 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5687344813108351443, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
+  m_PrefabInstance: {fileID: 5511204798841425904}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78cdd236ec5d6214cb72241f592f7142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

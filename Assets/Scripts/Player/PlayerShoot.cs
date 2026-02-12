@@ -8,22 +8,24 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private InputActionReference shootAction;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Rigidbody2D playerRb;
+    private PlayerSounds playerSounds;
 
     [Header("Shooting Settings")]
     [SerializeField] private float fireRate = 0.25f;
     [SerializeField] private bool aimAtMouse = false;
+    
 
     [Header("Recoil (Opcional)")]
     [SerializeField] private float recoilForce = 0f;
 
     [Header("Power-up")]
-    [SerializeField] private float powerupFireRateMultiplier = 0.2f; // 20% del fireRate original
+    [SerializeField] private float powerupFireRateMultiplier = 0.2f;
     private bool isPowerupActive = false;
     private float powerupEndTime = 0f;
     private float originalFireRate;
 
     [Header("Power-up Visual Feedback")]
-    [SerializeField] private SpriteRenderer playerSprite; // asignar el sprite del jugador
+    [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private Color powerupColor = Color.yellow;
     [SerializeField] private float blinkInterval = 0.2f;
 
@@ -36,13 +38,15 @@ public class PlayerShoot : MonoBehaviour
     {
         originalColor = playerSprite.color;
         originalFireRate = fireRate;
+
+        playerSounds = GetComponent<PlayerSounds>();
+
     }
 
     private void Update()
     {
         FlipFirePoint();
 
-        // Si el power-up está activo y pasó el tiempo, lo desactivamos
         if (isPowerupActive && Time.time >= powerupEndTime)
         {
             fireRate = originalFireRate;
@@ -97,13 +101,14 @@ public class PlayerShoot : MonoBehaviour
     private void Shoot()
     {
         GameObject bullet = BulletPoolPlayer.Instance.GetBullet();
-        Debug.Log("instancia  nula?" + BulletPoolPlayer.Instance);
+        Vector2 direction;
+        Bullet b = bullet.GetComponent<Bullet>();
+
         if (bullet == null) return;
 
         bullet.transform.position = firePoint.position;
 
-        // Dirección 
-        Vector2 direction;
+        //transforms the mouse position into world position and then it substracts the gun position
         if (aimAtMouse)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -114,16 +119,22 @@ public class PlayerShoot : MonoBehaviour
             direction = spriteRenderer != null && spriteRenderer.flipX ? Vector2.left : Vector2.right;
         }
 
-        // 🔥 ROTACIÓN CORRECTA SEGÚN DIRECCIÓN 
-        if (direction.x < 0) bullet.transform.rotation = Quaternion.Euler(0, 180, 0); // mirando izquierda 
-        else bullet.transform.rotation = Quaternion.identity; // mirando derecha 
+        //rotates the bullet visually
+        if (direction.x < 0) 
+            bullet.transform.rotation = Quaternion.Euler(0, 180, 0); 
+        else 
+            bullet.transform.rotation = Quaternion.identity;
 
-        // Velocidad de la bala 
-        Bullet b = bullet.GetComponent<Bullet>();
         b.Fire(direction);
 
-        // Recoil opcional 
-        if (recoilForce > 0f && playerRb != null) playerRb.AddForce(-direction * recoilForce, ForceMode2D.Impulse); bullet.SetActive(true);
+        if (playerSounds != null)
+            playerSounds.PlayShootSound();
+
+        //to apply recoil what pushes the player back
+        if (recoilForce > 0f && playerRb != null) 
+            playerRb.AddForce(-direction * recoilForce, ForceMode2D.Impulse); 
+        
+        bullet.SetActive(true);
     }
 
     public void ActivateFireRatePowerup(float duration)
@@ -132,7 +143,6 @@ public class PlayerShoot : MonoBehaviour
         isPowerupActive = true;
         powerupEndTime = Time.time + duration;
 
-        // Iniciar corutina de blink
         if (blinkRoutine != null)
             StopCoroutine(blinkRoutine);
 
@@ -150,7 +160,6 @@ public class PlayerShoot : MonoBehaviour
             yield return new WaitForSeconds(blinkInterval);
         }
 
-        // Asegurar que al final quede el color normal
         playerSprite.color = originalColor;
     }
 
