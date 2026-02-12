@@ -305,6 +305,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo-Torreta
       objectReference: {fileID: 0}
+    - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 946758524}
     - target: {fileID: 7741302998794713379, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.38
@@ -15132,6 +15136,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo-Torreta (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 946758524}
     - target: {fileID: 7741302998794713379, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.37

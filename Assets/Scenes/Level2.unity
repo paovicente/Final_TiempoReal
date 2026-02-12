@@ -39255,6 +39255,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo-Torreta
       objectReference: {fileID: 0}
+    - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 946758524}
+    - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 520903969}
     - target: {fileID: 7741302998794713379, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.89
@@ -39300,6 +39308,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+--- !u!212 &520903969 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2912800232023719524, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+  m_PrefabInstance: {fileID: 520903968}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &528669567
 GameObject:
   m_ObjectHideFlags: 0
@@ -39552,6 +39565,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo-Torreta (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 946758524}
+    - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 587214691}
     - target: {fileID: 7741302998794713379, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: m_LocalPosition.x
       value: 42.87
@@ -39597,6 +39618,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+--- !u!212 &587214691 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2912800232023719524, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+  m_PrefabInstance: {fileID: 587214690}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &596074110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40051,6 +40077,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo-Torreta (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 946758524}
+    - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 793297498}
     - target: {fileID: 7741302998794713379, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.15
@@ -40096,6 +40130,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+--- !u!212 &793297498 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2912800232023719524, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+  m_PrefabInstance: {fileID: 793297497}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &806569867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40108,6 +40147,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo-Torreta (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 946758524}
+    - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 806569868}
     - target: {fileID: 7741302998794713379, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: m_LocalPosition.x
       value: 94.72
@@ -40153,6 +40200,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+--- !u!212 &806569868 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2912800232023719524, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+  m_PrefabInstance: {fileID: 806569867}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &883790166
 GameObject:
   m_ObjectHideFlags: 0
@@ -40567,6 +40619,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo-Torreta (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 946758524}
+    - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 1041541217}
     - target: {fileID: 7741302998794713379, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: m_LocalPosition.x
       value: 65.07
@@ -40612,6 +40672,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+--- !u!212 &1041541217 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2912800232023719524, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+  m_PrefabInstance: {fileID: 1041541216}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1105835071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41166,6 +41231,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo-Torreta (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 946758524}
+    - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 1344255636}
     - target: {fileID: 7741302998794713379, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: m_LocalPosition.x
       value: 101.67
@@ -41211,6 +41284,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+--- !u!212 &1344255636 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2912800232023719524, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+  m_PrefabInstance: {fileID: 1344255635}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1372791494
 PrefabInstance:
   m_ObjectHideFlags: 0

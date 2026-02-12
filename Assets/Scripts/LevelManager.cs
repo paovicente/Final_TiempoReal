@@ -61,6 +61,16 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     private void GoToMenu(InputAction.CallbackContext context)
     {
         if (SceneManager.GetActiveScene().name == startScreenScene)
@@ -237,6 +247,18 @@ public class LevelManager : MonoBehaviour
         if (isPaused && pausePanel != null)
             pausePanel.SetActive(true);
     }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject spawnObj = GameObject.Find("PlayerSpawn");
+
+        if (player != null && spawnObj != null)
+        {
+            player.transform.position = spawnObj.transform.position;
+        }
+    }
+
 
     public void ExitGame()
     {

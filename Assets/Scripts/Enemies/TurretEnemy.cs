@@ -18,10 +18,13 @@ public class TurretEnemy : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color hitColor = Color.red;
 
+    [Header("References")]
+    [SerializeField] private GameObject player;
+
     private int currentHits = 0;
     private float lastShootTime = 0f;
     private bool isDead = false;
-    private GameObject player;
+    
     private Color originalColor;
 
     private void Start()
@@ -30,11 +33,12 @@ public class TurretEnemy : MonoBehaviour
             spriteRenderer = GetComponent<SpriteRenderer>();
 
         originalColor = spriteRenderer.color;
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
+        Debug.Log("isDead: " + isDead + "player: " + player);
+
         if (isDead || player == null) return;
 
         bool playerOnRight = player.transform.position.x > transform.position.x;
@@ -42,6 +46,9 @@ public class TurretEnemy : MonoBehaviour
 
         //shoot if player is in range and the cooldown is completed
         float distance = Vector2.Distance(transform.position, player.transform.position);
+        Debug.Log("transform.position: " + transform.position + "player.transform.position: " + player.transform.position);
+            
+        Debug.Log(this.name + "distance: " + distance + "---- detection range: " + detectionRange);
         if (distance <= detectionRange && Time.time >= lastShootTime + shootInterval)
         {
             ShootAtPlayer();
