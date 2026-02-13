@@ -29,7 +29,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         if (CheatsManager.Instance != null)
-            CheatsManager.Instance.RegisterPlayer(this);
+            CheatsManager.Instance.RegisterPlayerHealth(this);
 
         string sceneName = LevelManager.instance.GetActiveScene();
 

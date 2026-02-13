@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player variables")]
     [SerializeField] private float playerSpeed = 2f;
+    private float speedMultiplier = 1f;
 
     [Header("Jump")]
     [SerializeField] private float jumpForce = 12f;
@@ -37,6 +38,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        if (CheatsManager.Instance != null)
+            CheatsManager.Instance.RegisterPlayerController(this);
+
         originalGravity = playerRigidbody.gravityScale;
         
         moveAction.action.started += HandleMoveInput;
@@ -82,10 +86,15 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        playerRigidbody.linearVelocity = new Vector2(moveInput.x * playerSpeed, playerRigidbody.linearVelocity.y); //the player moves in x according to the input and maintains velocity in y 
+        playerRigidbody.linearVelocity = new Vector2(moveInput.x * playerSpeed * speedMultiplier, playerRigidbody.linearVelocity.y); //the player moves in x according to the input and maintains velocity in y 
         
         if (moveInput.x != 0)
             sprite.flipX = moveInput.x < 0;
+    }
+
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        speedMultiplier = multiplier;
     }
 
     private void CheckGround()

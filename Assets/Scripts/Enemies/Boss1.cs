@@ -66,12 +66,14 @@ public class AdvancedEnemy : MonoBehaviour
 
     private void Update()
     {
+            
         if (isDead) return;
 
         Patrol();
         HandleJump();
         HandleShooting();
         HandleBurst();
+        
     }
 
     private void Patrol()

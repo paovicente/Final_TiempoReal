@@ -10,10 +10,17 @@ public class CheatsManager : MonoBehaviour
     [SerializeField] private InputActionReference invincibleAction;
     [SerializeField] private InputActionReference nextLevelAction;
     [SerializeField] private InputActionReference killEnemiesAction;
+    [SerializeField] private InputActionReference speedAction;
+
+
     [SerializeField] private GameObject cheatsInfoPanel;
     [SerializeField] private PlayerHealth playerHealth;
+    [SerializeField] private PlayerController playerController;
+
+    [SerializeField] private float speedMultiplier = 2f;
 
     public bool InvincibleCheatActive { get; private set; }
+    private bool speedCheatActive = false;
 
     private void Awake()
     {
@@ -21,7 +28,7 @@ public class CheatsManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void RegisterPlayer(PlayerHealth player)
+    public void RegisterPlayerHealth(PlayerHealth player)
     {
         playerHealth = player;
 
@@ -29,11 +36,20 @@ public class CheatsManager : MonoBehaviour
             playerHealth.SetInvincible(InvincibleCheatActive);
     }
 
+    public void RegisterPlayerController(PlayerController player)
+    {
+        playerController = player;
+
+        if (speedCheatActive)
+            playerController.SetSpeedMultiplier(speedMultiplier);
+    }
+
     private void Start()
     {
         cheatsInfoAction.action.performed += ActivateCheatsInfo;
         invincibleAction.action.performed += InvinciblePlayer;
         killEnemiesAction.action.performed += KillEnemies;
+        speedAction.action.performed += FastestPlayer;
     }
 
     private void ActivateCheatsInfo(InputAction.CallbackContext context)
@@ -72,5 +88,19 @@ public class CheatsManager : MonoBehaviour
         }
 
         Debug.Log("All enemies killed");
+    }
+
+    private void FastestPlayer(InputAction.CallbackContext context)
+    {
+        speedCheatActive = !speedCheatActive;
+
+        if (playerController != null)
+        {
+            if (speedCheatActive)
+                playerController.SetSpeedMultiplier(speedMultiplier);
+            else
+                playerController.SetSpeedMultiplier(1f);
+        }
+
     }
 }

@@ -14909,6 +14909,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1058441479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1058441481}
+  - component: {fileID: 1058441480}
+  m_Layer: 0
+  m_Name: ToNextLevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1058441480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058441479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e9dceb0ac47834083c8f8a6fbc7256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 2012389270}
+  enemyBoss: {fileID: 1273401145}
+--- !u!4 &1058441481
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058441479}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 295.18002, y: 318.34775, z: -3.1332698}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1119283569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16660,7 +16706,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2012389272}
   - component: {fileID: 2012389271}
-  - component: {fileID: 2012389273}
   - component: {fileID: 2012389274}
   m_Layer: 0
   m_Name: Door
@@ -16741,18 +16786,6 @@ Transform:
   - {fileID: 1528503320}
   m_Father: {fileID: 1462367391}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2012389273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2012389270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ec70cde3af679046bda46ddd66d7345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &2012389274
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17035,3 +17068,4 @@ SceneRoots:
   - {fileID: 1273401150}
   - {fileID: 1119283569}
   - {fileID: 1178883030}
+  - {fileID: 1058441481}
