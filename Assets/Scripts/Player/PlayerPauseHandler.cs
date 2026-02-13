@@ -6,6 +6,8 @@ public class PlayerPauseHandler : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private PlayerShoot playerShoot;
+    [SerializeField] private Rigidbody2D playerRb;
+
     private void Awake()
     {
         if (animator == null) animator = GetComponent<Animator>();
@@ -27,6 +29,9 @@ public class PlayerPauseHandler : MonoBehaviour
 
         if (playerShoot != null)
             playerShoot.enabled = false;
+
+        playerRb.linearVelocity = Vector2.zero;
+        playerRb.simulated = false;
     }
 
     public void ResumePlayer()
@@ -42,6 +47,8 @@ public class PlayerPauseHandler : MonoBehaviour
 
         if (playerShoot != null)
             playerShoot.enabled = true;
+
+        playerRb.simulated = true;
     }
 }
 

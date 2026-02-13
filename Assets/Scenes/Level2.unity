@@ -44094,6 +44094,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -6814766905822777914, guid: 6ba7497e24e422149b63e8594c578516, type: 3}
     - target: {fileID: 3424208598911730268, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
+      propertyPath: playerRb
+      value: 
+      objectReference: {fileID: 1686468348}
+    - target: {fileID: 3424208598911730268, guid: 168835ac0a5e7ec4995c1ec4e54abf01, type: 3}
       propertyPath: playerShoot
       value: 
       objectReference: {fileID: 1686468360}
