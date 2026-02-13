@@ -39,6 +39,12 @@ public class CheatsManager : MonoBehaviour
         nextLevelAction.action.performed += NextLevel;
     }
 
+    private void Update()
+    {
+        if (!IsInLevel())
+            cheatsInfoPanel.SetActive(false);
+    }
+
     public void RegisterPlayerHealth(PlayerHealth player)
     {
         playerHealth = player;

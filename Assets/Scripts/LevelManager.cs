@@ -152,22 +152,6 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
-    /*public void LoadNextLevel(float delay = 0.2f)
-    {
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextIndex = currentIndex + 1;
-
-        string scenePath = SceneUtility.GetScenePathByBuildIndex(nextIndex);
-
-        if (string.IsNullOrEmpty(scenePath))
-        {
-            Debug.LogWarning("The game doesn't have next level.");
-            return;
-        }
-
-        string sceneName = Path.GetFileNameWithoutExtension(scenePath);
-        LoadScene(sceneName, delay);
-    }*/
 
     public void LoadNextLevel(float delay = 0.2f)
     {

@@ -1308,6 +1308,8 @@ MonoBehaviour:
   pausePanel: {fileID: 564099312}
   fallbackCamera: {fileID: 2125654807}
   currentOptionsPanel: {fileID: 879774934}
+  firstLevelName: Level1
+  lastLevelName: Level3
 --- !u!4 &303086669
 Transform:
   m_ObjectHideFlags: 0
