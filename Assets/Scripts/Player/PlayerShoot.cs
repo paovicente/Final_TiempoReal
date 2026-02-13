@@ -163,5 +163,15 @@ public class PlayerShoot : MonoBehaviour
         playerSprite.color = originalColor;
     }
 
+    public void EquipWeapon(RuntimeAnimatorController armedAnimator)
+    {
+        this.enabled = true;
+
+        Animator anim = GetComponent<Animator>();
+        if (anim != null && armedAnimator != null)
+        {
+            anim.runtimeAnimatorController = armedAnimator;
+        }
+    }
 
 }

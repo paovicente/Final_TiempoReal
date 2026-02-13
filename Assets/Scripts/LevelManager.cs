@@ -20,6 +20,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private Camera fallbackCamera;
     [SerializeField] private GameObject currentOptionsPanel;
+    [SerializeField] private string firstLevelName = "Level1";
+    [SerializeField] private string lastLevelName = "Level3";
 
     private Scene activeScene;
     public static bool isPaused { get; private set; }
@@ -150,7 +152,7 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
-    public void LoadNextLevel(float delay = 0.2f)
+    /*public void LoadNextLevel(float delay = 0.2f)
     {
         int currentIndex = SceneManager.GetActiveScene().buildIndex;
         int nextIndex = currentIndex + 1;
@@ -165,7 +167,27 @@ public class LevelManager : MonoBehaviour
 
         string sceneName = Path.GetFileNameWithoutExtension(scenePath);
         LoadScene(sceneName, delay);
+    }*/
+
+    public void LoadNextLevel(float delay = 0.2f)
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene == lastLevelName)
+        {
+            LoadScene(firstLevelName, delay);
+            return;
+        }
+
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextIndex = currentIndex + 1;
+
+        string scenePath = SceneUtility.GetScenePathByBuildIndex(nextIndex);
+        string sceneName = Path.GetFileNameWithoutExtension(scenePath);
+
+        LoadScene(sceneName, delay);
     }
+
 
     public void PauseGame()
     {
@@ -266,17 +288,6 @@ public class LevelManager : MonoBehaviour
         if (isPaused && pausePanel != null)
             pausePanel.SetActive(true);
     }
-
-    /*private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        GameObject spawnObj = GameObject.Find("PlayerSpawn");
-
-        if (player != null && spawnObj != null)
-        {
-            player.transform.position = spawnObj.transform.position;
-        }
-    }*/
 
     public string GetActiveScene()
     {

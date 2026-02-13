@@ -31503,7 +31503,7 @@ GameObject:
   - component: {fileID: 1536387837}
   - component: {fileID: 1536387840}
   m_Layer: 0
-  m_Name: Arma
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
