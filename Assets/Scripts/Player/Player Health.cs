@@ -130,11 +130,6 @@ public class PlayerHealth : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnDestroy()
-    {
-       
-    }
-
     public void SetInvincible(bool value)
     {
         IsInvincible = value;

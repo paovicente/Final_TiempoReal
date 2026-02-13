@@ -21,7 +21,6 @@ public class Bullet : MonoBehaviour
             rb.freezeRotation = true;
         }
 
-        // Ignorar colisión con el jugador
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
@@ -37,7 +36,6 @@ public class Bullet : MonoBehaviour
     {
         lifeTimer = 0f;
 
-        // Si se estableci� una direcci�n antes de activar: aplicarla
         if (hasPendingDirection)
         {
             rb.linearVelocity = pendingDirection * speed;
@@ -54,14 +52,12 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Ignorar colisi�n con el player si hace falta (agregar tag check)
-        // if (other.CompareTag("Player")) return;
         gameObject.SetActive(false);
     }
 
     /// <summary>
-    /// Llama para disparar la bala desde afuera. Funciona tanto si la bala ya est� activa (aplica velocidad inmediatamente)
-    /// como si est� inactiva (guarda la direcci�n y la aplicar� en OnEnable).
+    /// Calls to fire the bullet from outside. Works whether the bullet is already active (apply speed immediately)
+    /// as if it is inactive (save the direction and apply it in OnEnable).
     /// </summary>
     public void Fire(Vector2 direction)
     {
@@ -78,7 +74,6 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            // Guardamos la direcci�n y la aplicamos en OnEnable
             pendingDirection = direction;
             hasPendingDirection = true;
         }
