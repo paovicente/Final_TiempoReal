@@ -7,7 +7,7 @@ public class ResultsUI : MonoBehaviour
 
     private void Start()
     {
-        string result = PlayerPrefs.GetString("GameResult", "Game Over");
+        string result = PlayerPrefs.GetString("GameResult", "ResultScene");
 
         resultText.text = result;
     }

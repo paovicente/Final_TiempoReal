@@ -1,6 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -128,6 +129,16 @@ public class PlayerController : MonoBehaviour
 
         playerRigidbody.gravityScale = originalGravity;
         isDashing = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Door"))
+        {
+            Debug.Log("You found the door.");
+            PlayerPrefs.SetString("GameResult", "You Win!");
+            LevelManager.instance.LoadScene("ResultScene");
+        }
     }
 
     // --------------------------------------------------

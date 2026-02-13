@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Bullet-Enemy
   - HealthScoreUI
+  - Door
   layers:
   - Default
   - TransparentFX
