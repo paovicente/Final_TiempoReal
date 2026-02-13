@@ -2,6 +2,7 @@ using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
@@ -22,6 +23,9 @@ public class LevelManager : MonoBehaviour
 
     private Scene activeScene;
     public static bool isPaused { get; private set; }
+
+    public event System.Action<Scene, LoadSceneMode> SceneLoaded;
+
 
     private void Awake()
     {
@@ -63,12 +67,27 @@ public class LevelManager : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneLoaded += HandleSceneLoaded;
     }
 
     private void OnDisable()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded -= HandleSceneLoaded;
+    }
+
+    private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject spawnObj = GameObject.Find("PlayerSpawn");
+
+        if (player != null && spawnObj != null)
+        {
+            player.transform.position = spawnObj.transform.position;
+        }
+
+        //notify
+        SceneLoaded?.Invoke(scene, mode);
     }
 
     private void GoToMenu(InputAction.CallbackContext context)
@@ -248,7 +267,7 @@ public class LevelManager : MonoBehaviour
             pausePanel.SetActive(true);
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    /*private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject spawnObj = GameObject.Find("PlayerSpawn");
@@ -257,8 +276,12 @@ public class LevelManager : MonoBehaviour
         {
             player.transform.position = spawnObj.transform.position;
         }
-    }
+    }*/
 
+    public string GetActiveScene()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
 
     public void ExitGame()
     {

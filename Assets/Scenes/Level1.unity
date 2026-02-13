@@ -30741,7 +30741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8784409845954165291, guid: 6eeefeeb440e364468252e2e5c8d5d97, type: 3}
       propertyPath: m_TagString
-      value: EnemyPatrol
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31948,7 +31948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8784409845954165291, guid: 6eeefeeb440e364468252e2e5c8d5d97, type: 3}
       propertyPath: m_TagString
-      value: EnemyPatrol
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32589,6 +32589,10 @@ PrefabInstance:
     - target: {fileID: 6360428661492871213, guid: e28ab838bc7b13243a5bcf61dbd4c264, type: 3}
       propertyPath: m_Name
       value: Robot-Patrulla
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360428661492871213, guid: e28ab838bc7b13243a5bcf61dbd4c264, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7340039664267518421, guid: e28ab838bc7b13243a5bcf61dbd4c264, type: 3}
       propertyPath: m_LocalPosition.x

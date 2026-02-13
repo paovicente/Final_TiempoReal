@@ -38963,7 +38963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8784409845954165291, guid: 6eeefeeb440e364468252e2e5c8d5d97, type: 3}
       propertyPath: m_TagString
-      value: EnemyPatrol
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39152,7 +39152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8784409845954165291, guid: 6eeefeeb440e364468252e2e5c8d5d97, type: 3}
       propertyPath: m_TagString
-      value: EnemyPatrol
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39254,6 +39254,10 @@ PrefabInstance:
     - target: {fileID: 1011478678071895767, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: m_Name
       value: Enemigo-Torreta
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011478678071895767, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: player
@@ -39565,6 +39569,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo-Torreta (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1011478678071895767, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: player
       value: 
@@ -39713,7 +39721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8784409845954165291, guid: 6eeefeeb440e364468252e2e5c8d5d97, type: 3}
       propertyPath: m_TagString
-      value: EnemyPatrol
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40077,6 +40085,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo-Torreta (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1011478678071895767, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: player
       value: 
@@ -40146,6 +40158,10 @@ PrefabInstance:
     - target: {fileID: 1011478678071895767, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: m_Name
       value: Enemigo-Torreta (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011478678071895767, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: player
@@ -40511,7 +40527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8784409845954165291, guid: 6eeefeeb440e364468252e2e5c8d5d97, type: 3}
       propertyPath: m_TagString
-      value: EnemyPatrol
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40619,6 +40635,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo-Torreta (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1011478678071895767, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: player
       value: 
@@ -40696,6 +40716,10 @@ PrefabInstance:
     - target: {fileID: 6360428661492871213, guid: e28ab838bc7b13243a5bcf61dbd4c264, type: 3}
       propertyPath: m_Name
       value: Robot-Patrulla (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360428661492871213, guid: e28ab838bc7b13243a5bcf61dbd4c264, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7340039664267518421, guid: e28ab838bc7b13243a5bcf61dbd4c264, type: 3}
       propertyPath: m_LocalPosition.x
@@ -41005,7 +41029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8784409845954165291, guid: 6eeefeeb440e364468252e2e5c8d5d97, type: 3}
       propertyPath: m_TagString
-      value: EnemyPatrol
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -41231,6 +41255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo-Torreta (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1011478678071895767, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4977112967209050751, guid: ae6b7cca550b0854daf9054473d1d384, type: 3}
       propertyPath: player
       value: 
@@ -41379,7 +41407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8784409845954165291, guid: 6eeefeeb440e364468252e2e5c8d5d97, type: 3}
       propertyPath: m_TagString
-      value: EnemyPatrol
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -42696,7 +42724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8784409845954165291, guid: 6eeefeeb440e364468252e2e5c8d5d97, type: 3}
       propertyPath: m_TagString
-      value: EnemyPatrol
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -43825,6 +43853,10 @@ PrefabInstance:
     - target: {fileID: 6360428661492871213, guid: e28ab838bc7b13243a5bcf61dbd4c264, type: 3}
       propertyPath: m_Name
       value: Robot-Patrulla
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360428661492871213, guid: e28ab838bc7b13243a5bcf61dbd4c264, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7340039664267518421, guid: e28ab838bc7b13243a5bcf61dbd4c264, type: 3}
       propertyPath: m_LocalPosition.x

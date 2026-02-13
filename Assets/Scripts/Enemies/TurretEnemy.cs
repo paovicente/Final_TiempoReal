@@ -37,7 +37,6 @@ public class TurretEnemy : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("isDead: " + isDead + "player: " + player);
 
         if (isDead || player == null) return;
 
@@ -46,9 +45,7 @@ public class TurretEnemy : MonoBehaviour
 
         //shoot if player is in range and the cooldown is completed
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log("transform.position: " + transform.position + "player.transform.position: " + player.transform.position);
-            
-        Debug.Log(this.name + "distance: " + distance + "---- detection range: " + detectionRange);
+        
         if (distance <= detectionRange && Time.time >= lastShootTime + shootInterval)
         {
             ShootAtPlayer();

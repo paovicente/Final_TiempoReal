@@ -9,7 +9,17 @@ public class HUDController : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        
+    }
+    private void OnEnable()
+    {
+        LevelManager.instance.SceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        if (LevelManager.instance != null)
+            LevelManager.instance.SceneLoaded -= OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -32,9 +42,5 @@ public class HUDController : MonoBehaviour
         return sceneName.StartsWith("Level");
     }
 
-    private void OnDestroy()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
 }
 

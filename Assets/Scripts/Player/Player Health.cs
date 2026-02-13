@@ -1,10 +1,11 @@
-
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public bool IsInvincible { get; private set; }
+
     public int maxHealth = 100;
     private int currentHealth;
 
@@ -14,14 +15,23 @@ public class PlayerHealth : MonoBehaviour
     public float damageCooldown = 2f;
     private float lastDamageTime = -10f;
 
-    private void Awake()
+    private void OnEnable()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        LevelManager.instance.SceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        if (LevelManager.instance != null)
+            LevelManager.instance.SceneLoaded -= OnSceneLoaded;
     }
 
     private void Start()
     {
-        string sceneName = SceneManager.GetActiveScene().name;
+        if (CheatsManager.Instance != null)
+            CheatsManager.Instance.RegisterPlayer(this);
+
+        string sceneName = LevelManager.instance.GetActiveScene();
 
         if (sceneName == "Level1")
         {
@@ -49,6 +59,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (IsInvincible) //if the F2 cheat - player invincible is active, then the player doesnt take damage
+            return;
+
         if (Time.time - lastDamageTime < damageCooldown)
             return;
 
@@ -119,7 +132,13 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnDestroy()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+       
     }
+
+    public void SetInvincible(bool value)
+    {
+        IsInvincible = value;
+    }
+
 }
 
